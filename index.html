@@ -3,43 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITAN MECHANIC | Bengkel Mobil 24 Jam Tangerang & Service Panggilan</title>
-    <meta name="description" content="Bengkel Mobil Paling Brutal di Tangerang. Layanan Darurat 24 Jam, Turun Mesin, Matic, Kaki-kaki, dan Derek. Montir Siap Tempur.">
+    <title>TITAN MECHANIC | Bengkel Mobil 24 Jam Tangerang & Scan ECU</title>
+    <meta name="description" content="Bengkel Mobil Tercanggih di Tangerang. Spesialis Scan ECU, Turun Mesin, Matic, dan Kaki-kaki. Layanan Darurat 24 Jam.">
     <meta name="robots" content="index, follow">
 
     <meta name="google-site-verification" content="PASTE_KODE_GSC_DISINI" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "AutoRepair",
       "name": "Titan Mechanic Pro Tangerang",
-      "image": "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?q=80&w=1200",
+      "image": "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=1200",
       "telephone": "6285283212205",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Tangerang",
         "addressRegion": "Banten"
       },
-      "priceRange": "$$",
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "opens": "00:00",
-          "closes": "23:59"
-        }
-      ]
+      "priceRange": "$$"
     }
     </script>
 
     <style>
-        /* 1. RESET & VARS */
+        /* 1. RESET & VARS (COLOR PALETTE: MAGMA CYBER) */
         :root {
-            --red: #ff1a1a;
-            --dark: #080808;
+            --magma: #FF4500; /* Orange Lava - Energy/Emergency */
+            --cyan: #00E5FF; /* Cyber Blue - Tech/Scanner */
+            --dark: #050505;
             --carbon: #111111;
             --steel: #2a2a2a;
             --text: #e0e0e0;
@@ -48,115 +41,165 @@
         body { 
             background-color: var(--dark); 
             color: var(--text); 
-            font-family: 'Rajdhani', sans-serif; /* Font lebih teknikal */
+            font-family: 'Rajdhani', sans-serif; 
             overflow-x: hidden; 
-            background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png'); /* Grunge Texture */
+            /* Grid Background Pattern */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
         }
-        h1, h2, h3 { font-family: 'Russo One', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* 2. UTILITIES */
-        .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
-        .text-red { color: var(--red); }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        /* 2. NAVBAR & LOGO (FIXED LAPTOP ISSUE) */
+        nav {
+            position: absolute; top: 0; left: 0; width: 100%; z-index: 100;
+            padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+        }
+        .logo-wrap {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.5rem; color: #fff;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+        .logo-icon {
+            color: var(--magma); font-size: 2rem;
+        }
+        .logo-text span { color: var(--cyan); }
 
-        /* 3. HERO SECTION (LEBIH GARANG) */
+        /* 3. HERO SECTION (FUTURISTIC) */
         .hero {
-            height: 95vh; display: flex; align-items: center; justify-content: center;
+            height: 100vh; display: flex; align-items: center; justify-content: center;
             position: relative; overflow: hidden;
-            border-bottom: 5px solid var(--red);
+            border-bottom: 3px solid var(--magma);
         }
         .hero-bg {
             position: absolute; inset: 0; z-index: -1;
-            /* Gambar Montir dengan Percikan Api */
-            background: linear-gradient(to bottom, rgba(0,0,0,0.5), var(--dark)),
-                        url('https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?q=80&w=1200');
+            background: radial-gradient(circle at center, rgba(0,0,0,0.2), var(--dark)),
+                        url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=1200');
             background-size: cover; background-position: center;
-            filter: contrast(1.2) saturate(1.1);
+            filter: contrast(1.2) brightness(0.6);
         }
-        .hero-content { text-align: center; padding: 20px; position: relative; z-index: 10; }
-        .hero-title { font-size: 4rem; line-height: 1; color: #fff; text-shadow: 2px 2px 0 #000, 0 0 30px rgba(255, 26, 26, 0.5); }
-        .hero-title span { color: var(--red); display: block; font-size: 2rem; margin-top: 10px; letter-spacing: 5px; -webkit-text-stroke: 1px #000; }
+        .hero-content { text-align: center; padding: 20px; position: relative; z-index: 10; max-width: 900px; }
         
-        /* EMERGENCY BUTTON (LEBIH AGRESIF) */
+        /* Glitch Effect Title */
+        .hero-title { 
+            font-size: 3.5rem; line-height: 1.1; color: #fff; 
+            text-shadow: 3px 3px 0px rgba(0, 229, 255, 0.3);
+            margin-bottom: 20px;
+        }
+        .hero-title span { color: var(--magma); display: block; font-size: 1.8rem; margin-top: 10px; letter-spacing: 8px; }
+
+        /* 4. BUTTONS */
         .btn-emergency {
             display: inline-block; margin-top: 30px;
-            background: var(--red); color: #fff; padding: 20px 50px;
-            font-family: 'Russo One', sans-serif; font-size: 1.5rem; text-decoration: none;
-            border: 3px solid #fff; position: relative;
-            box-shadow: 0 0 20px rgba(255, 26, 26, 0.8);
-            animation: pulse-red 1s infinite cubic-bezier(0.66, 0, 0, 1);
+            background: var(--magma); color: #fff; padding: 20px 50px;
+            font-family: 'Orbitron', sans-serif; font-size: 1.2rem; text-decoration: none; font-weight: bold;
+            border: 2px solid var(--magma); position: relative; overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.4);
+            transition: 0.3s;
             clip-path: polygon(15% 0, 100% 0, 100% 70%, 85% 100%, 0 100%, 0 30%);
         }
-        @keyframes pulse-red {
-            to { box-shadow: 0 0 0 30px rgba(255, 26, 26, 0); }
+        .btn-emergency:hover { background: transparent; color: var(--magma); box-shadow: 0 0 50px rgba(255, 69, 0, 0.8); }
+        .btn-emergency::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shine 3s infinite;
         }
+        @keyframes shine { 0% { left: -100%; } 20% { left: 100%; } 100% { left: 100%; } }
 
-        /* 4. STATS (TRUST) */
-        .stats-bar { background: var(--red); padding: 40px 0; color: #fff; text-align: center; border-top: 2px solid #fff; }
-        .stat-num { font-size: 3.5rem; font-family: 'Russo One'; text-shadow: 3px 3px 0 #000; }
-        .stat-label { text-transform: uppercase; font-size: 1rem; letter-spacing: 2px; font-weight: bold; }
+        /* 5. STATS HUD */
+        .stats-bar { 
+            background: rgba(17, 17, 17, 0.9); border-top: 1px solid var(--cyan); border-bottom: 1px solid var(--cyan);
+            padding: 30px 0; color: #fff; text-align: center; backdrop-filter: blur(10px);
+        }
+        .stat-num { font-size: 2.5rem; font-family: 'Orbitron'; color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
+        .stat-label { font-size: 0.9rem; letter-spacing: 2px; color: #888; }
 
-        /* 5. GALLERY (REAL ACTION - BARU!) */
+        /* 6. UTILITIES & GRID */
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        /* 7. GALLERY (IMAGE FIX) */
         .gallery-item { 
-            height: 250px; border: 3px solid var(--steel); position: relative; overflow: hidden; 
-            background: #000;
+            height: 250px; border: 1px solid var(--cyan); position: relative; overflow: hidden; 
+            border-radius: 5px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
         }
-        .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; filter: brightness(0.7) grayscale(50%); }
-        .gallery-item:hover .gallery-img { transform: scale(1.1); filter: brightness(1) grayscale(0%); border-color: var(--red); }
-        .gallery-item::after { content: ''; position: absolute; inset: 0; border: 3px solid transparent; transition: 0.5s; }
-        .gallery-item:hover::after { border-color: var(--red); }
+        .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; filter: grayscale(80%); }
+        .gallery-item:hover .gallery-img { transform: scale(1.1); filter: grayscale(0%); }
+        /* Overlay Text on Image */
+        .gallery-text {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 10px;
+            background: rgba(0,0,0,0.8); color: var(--cyan); font-family: 'Orbitron'; font-size: 0.8rem; text-align: center;
+        }
 
-        /* 6. SERVICE GRID */
+        /* 8. SERVICES (HOLOGRAPHIC CARD) */
         .service-card {
-            background: var(--carbon); border: 2px solid var(--steel); padding: 30px;
-            text-align: center; transition: 0.3s; position: relative; overflow: hidden;
-            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            background: rgba(20, 20, 20, 0.6); border: 1px solid #333; padding: 30px;
+            text-align: center; transition: 0.4s; position: relative; overflow: hidden;
+            backdrop-filter: blur(5px);
         }
-        .service-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--red);
-            transform: scaleX(0); transition: 0.4s; transform-origin: left;
+        .service-card:hover { 
+            border-color: var(--magma); 
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.2), inset 0 0 20px rgba(255, 69, 0, 0.1); 
+            transform: translateY(-5px);
         }
-        .service-card:hover { transform: translateY(-5px); border-color: var(--red); box-shadow: 0 10px 30px rgba(255, 26, 26, 0.2); }
-        .service-card:hover::before { transform: scaleX(1); }
-        .icon { font-size: 3.5rem; color: var(--red); margin-bottom: 20px; display: block; text-shadow: 0 0 10px rgba(255, 26, 26, 0.5); }
-        .service-card h3 { font-size: 1.5rem; }
-
-        /* 7. PRICING TABLE */
-        .price-box { max-width: 600px; margin: 0 auto; background: var(--carbon); border: 2px solid var(--steel); }
+        .icon { font-size: 3rem; color: var(--cyan); margin-bottom: 20px; display: block; text-shadow: 0 0 15px var(--cyan); }
+        .service-card:hover .icon { color: var(--magma); text-shadow: 0 0 15px var(--magma); }
+        
+        /* 9. PRICING (DIAGNOSTIC SCREEN LOOK) */
+        .price-box { 
+            max-width: 700px; margin: 0 auto; 
+            background: rgba(10, 10, 10, 0.9); border: 1px solid var(--cyan); 
+            padding: 20px; position: relative;
+        }
+        /* Corner Accents */
+        .price-box::before { content: ''; position: absolute; top: -2px; left: -2px; width: 20px; height: 20px; border-top: 2px solid var(--magma); border-left: 2px solid var(--magma); }
+        .price-box::after { content: ''; position: absolute; bottom: -2px; right: -2px; width: 20px; height: 20px; border-bottom: 2px solid var(--magma); border-right: 2px solid var(--magma); }
+        
         .price-row { 
-            display: flex; justify-content: space-between; padding: 20px; 
-            border-bottom: 1px solid var(--steel); transition: 0.3s; font-size: 1.1rem; font-weight: bold;
+            display: flex; justify-content: space-between; padding: 15px; 
+            border-bottom: 1px solid #333; font-size: 1.1rem; color: #ccc;
         }
-        .price-row:hover { background: var(--red); color: #fff; padding-left: 30px; border-left: 5px solid #fff; }
-        .price-row:hover .price-val { color: #fff; }
-        .price-val { color: var(--red); font-family: 'Russo One'; }
+        .price-val { color: var(--magma); font-family: 'Orbitron'; font-weight: bold; }
 
-        /* 8. FOOTER */
-        footer { background: #000; padding: 50px 0; text-align: center; border-top: 5px solid var(--red); }
-        .tech-partner { margin-top: 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; opacity: 0.8; }
-        .tech-partner a { font-size: 11px; color: #888; text-decoration: none; font-family: monospace; transition: 0.3s; text-transform: uppercase; border: 1px solid #333; padding: 5px 10px; background: #111; }
-        .tech-partner a:hover { color: var(--red); border-color: var(--red); background: #222; }
+        /* 10. FOOTER */
+        footer { background: #020202; padding: 60px 0; text-align: center; border-top: 1px solid var(--cyan); }
+        .tech-partner a { 
+            color: #555; border: 1px solid #333; padding: 5px 15px; margin: 5px; display: inline-block; 
+            font-size: 10px; text-decoration: none; font-family: 'Orbitron'; transition: 0.3s;
+        }
+        .tech-partner a:hover { color: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero-title { font-size: 3rem; }
-            .hero-title span { font-size: 1.5rem; }
-            .stat-num { font-size: 2.5rem; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-title span { font-size: 1.2rem; }
+            nav { padding: 20px; }
+            .logo-text { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="logo-wrap">
+            <span class="logo-icon">⚡</span>
+            <div class="logo-text">TITAN<span>MECHANIC</span></div>
+        </div>
+    </nav>
+
     <header class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
             <h1 class="hero-title">
-                TITAN MECHANIC
-                <span>BENGKEL MOBIL 24 JAM TANGERANG</span>
+                ADVANCED
+                <span>AUTO DIAGNOSTIC & REPAIR</span>
             </h1>
-            <p style="margin-top: 20px; font-size: 1.3rem; color: #eee; font-weight: bold;">SIAP TEMPUR. ANTI MOGOK. 100% GARANSI.</p>
-            <a href="https://wa.me/6285283212205?text=TOLONG%20MOBIL%20SAYA%20MOGOK!%20Lokasi%20di..." class="btn-emergency">
-                🚨 DARURAT? KLIK DISINI!
+            <p style="margin-top: 20px; font-size: 1.2rem; color: #ddd; text-shadow: 1px 1px 2px #000;">
+                Teknologi Scan ECU Tercanggih. Mekanik Bersertifikat. Solusi Presisi.
+            </p>
+            <a href="https://wa.me/6285283212205?text=DARURAT!%20MOBIL%20SAYA%20MOGOK" class="btn-emergency">
+                🚨 EMERGENCY RESCUE
             </a>
         </div>
     </header>
@@ -165,119 +208,129 @@
         <div class="container" style="padding: 0; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
             <div>
                 <div class="stat-num">24/7</div>
-                <div class="stat-label">READY NON-STOP</div>
+                <div class="stat-label">RAPID RESPONSE</div>
             </div>
             <div>
-                <div class="stat-num">1500+</div>
-                <div class="stat-label">MOBIL TERATASI</div>
+                <div class="stat-num">100%</div>
+                <div class="stat-label">ACCURATE SCAN</div>
             </div>
             <div>
-                <div class="stat-num">4.9★</div>
-                <div class="stat-label">GOOGLE RATING</div>
+                <div class="stat-num">TOP</div>
+                <div class="stat-label">RATED WORKSHOP</div>
             </div>
         </div>
     </div>
 
-    <section style="padding: 80px 0; background: #0a0a0a;">
+    <section style="padding: 80px 0; background: #080808;">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem;">REAL <span class="text-red">ACTION</span></h2>
+            <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: #fff;">
+                REAL <span style="color:var(--magma)">CAPABILITIES</span>
+            </h2>
             <div class="grid-3">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1613214149922-f1809c99e181?q=80&w=500" class="gallery-img" alt="Montir Kolong Mobil">
+                    <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?q=80&w=500" class="gallery-img" alt="Under Car Service">
+                    <div class="gallery-text">UNDERCARRIAGE SPECIALIST</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=500" class="gallery-img" alt="Mesin Mobil">
+                    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=500" class="gallery-img" alt="ECU Diagnostic">
+                    <div class="gallery-text">COMPUTERIZED DIAGNOSTIC</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1632823471565-1ec284f69084?q=80&w=500" class="gallery-img" alt="Scanner Tools">
+                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=500" class="gallery-img" alt="Engine Turbo">
+                    <div class="gallery-text">ENGINE PRECISION</div>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="container">
-        <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem;">LAYANAN <span class="text-red">SIAP TEMPUR</span></h2>
+        <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: #fff;">
+            TITAN <span style="color:var(--cyan)">SERVICES</span>
+        </h2>
         <div class="grid-3">
             <div class="service-card">
-                <span class="icon">⚙️</span>
-                <h3>TURUN MESIN</h3>
-                <p style="color:#aaa; margin-top: 10px; font-weight: 600;">Overhaul total. Garansi mesin kembali prima seperti baru keluar dealer.</p>
+                <span class="icon">💻</span>
+                <h3>ECU SCANNING</h3>
+                <p style="color:#aaa; margin-top: 10px;">Diagnosa komputer akurat. Hapus indikator Check Engine & reset sistem.</p>
             </div>
             <div class="service-card">
-                <span class="icon">🛢️</span>
-                <h3>TUNE UP RACING</h3>
-                <p style="color:#aaa; margin-top: 10px; font-weight: 600;">Pembersihan ruang bakar, injektor, & throttle body. Tarikan auto enteng.</p>
+                <span class="icon">⚙️</span>
+                <h3>ENGINE OVERHAUL</h3>
+                <p style="color:#aaa; margin-top: 10px;">Turun mesin total dengan presisi pabrikan. Garansi tenaga kembali.</p>
+            </div>
+            <div class="service-card">
+                <span class="icon">🔋</span>
+                <h3>ELECTRICAL</h3>
+                <p style="color:#aaa; margin-top: 10px;">Perbaikan kelistrikan, urut kabel body, alternator, dan dinamo starter.</p>
             </div>
             <div class="service-card">
                 <span class="icon">❄️</span>
-                <h3>SPESIALIS AC</h3>
-                <p style="color:#aaa; margin-top: 10px; font-weight: 600;">AC tidak dingin? Kami bongkar total sampai ke akar masalahnya.</p>
+                <h3>AC SYSTEM</h3>
+                <p style="color:#aaa; margin-top: 10px;">Flushing mesin AC komputerisasi. Dingin maksimal, bebas bau.</p>
             </div>
             <div class="service-card">
                 <span class="icon">🔧</span>
-                <h3>KAKI-KAKI SENYAP</h3>
-                <p style="color:#aaa; margin-top: 10px; font-weight: 600;">Hilangkan bunyi gluduk-gluduk. Perbaikan rack steer, tie rod, dll.</p>
+                <h3>SUSPENSION</h3>
+                <p style="color:#aaa; margin-top: 10px;">Hilangkan bunyi kaki-kaki. Press tie rod, rack steer, dan shockbreaker.</p>
             </div>
             <div class="service-card">
-                <span class="icon">💻</span>
-                <h3>SCANNER CANGGIH</h3>
-                <p style="color:#aaa; margin-top: 10px; font-weight: 600;">Diagnosa penyakit mobil dengan komputer. Akurat 99% tanpa tebak-tebakan.</p>
-            </div>
-            <div class="service-card">
-                <span class="icon">🚛</span>
-                <h3>DEREK DARURAT</h3>
-                <p style="color:#aaa; margin-top: 10px; font-weight: 600;">Mogok di tol atau di rumah? Tim towing kami meluncur 24 jam.</p>
+                <span class="icon">🚨</span>
+                <h3>TOWING 24H</h3>
+                <p style="color:#aaa; margin-top: 10px;">Unit derek gendong (towing) standby 24 jam untuk evakuasi darurat.</p>
             </div>
         </div>
     </section>
 
-    <section style="background: #080808; padding: 80px 0; border-top: 2px solid var(--steel);">
+    <section style="background: #020202; padding: 80px 0; border-top: 1px solid #222;">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;">ESTIMASI <span class="text-red">HARGA JUJUR</span></h2>
+            <h2 style="text-align: center; margin-bottom: 50px; font-size: 2rem; color: #fff;">ESTIMATED <span style="color:var(--magma)">COST</span></h2>
             <div class="price-box">
                 <div class="price-row">
-                    <span>Jasa Tune Up + Carbon Cleaner</span>
-                    <span class="price-val">Start 350k</span>
-                </div>
-                <div class="price-row">
-                    <span>Service Rem 4 Roda (Bongkar)</span>
-                    <span class="price-val">Start 300k</span>
-                </div>
-                <div class="price-row">
-                    <span>Scanner Diagnosa</span>
+                    <span>Computer Diagnostic (Scan)</span>
                     <span class="price-val">Start 150k</span>
                 </div>
                 <div class="price-row">
-                    <span>Service AC (Isi Freon + Oli)</span>
+                    <span>Tune Up (Carbon Clean)</span>
+                    <span class="price-val">Start 350k</span>
+                </div>
+                <div class="price-row">
+                    <span>Brake Service (4 Wheels)</span>
+                    <span class="price-val">Start 300k</span>
+                </div>
+                <div class="price-row">
+                    <span>AC Maintenance (Freon+Oil)</span>
                     <span class="price-val">Start 250k</span>
                 </div>
                 <div class="price-row">
-                    <span>Jasa Turun Mesin (Jasa Only)</span>
-                    <span class="price-val">Call Us</span>
+                    <span>Emergency Roadside (Jasa)</span>
+                    <span class="price-val">Start 100k</span>
                 </div>
             </div>
-            <p style="text-align: center; color: #666; margin-top: 20px; font-size: 0.9rem;">*Harga jasa belum termasuk sparepart. Konsultasi GRATIS.</p>
+            <p style="text-align: center; color: #555; margin-top: 20px; font-size: 0.8rem; font-family: monospace;">[SYSTEM MESSAGE]: Harga estimasi awal. Final cost setelah pengecekan fisik.</p>
         </div>
     </section>
 
-    <div style="height: 400px; filter: grayscale(100%) contrast(1.2) brightness(0.8); border-top: 5px solid var(--red); border-bottom: 5px solid var(--red);">
+    <div style="height: 450px; border-top: 2px solid var(--magma); border-bottom: 2px solid var(--magma); position: relative;">
+        <div style="position: absolute; top: 20px; left: 20px; background: rgba(0,0,0,0.8); color: var(--cyan); padding: 10px; font-family: monospace; z-index: 10; border: 1px solid var(--cyan);">
+            GPS: TARGET LOCKED<br>LOC: TANGERANG HQ
+        </div>
         <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15864.716909516854!2d106.704859!3d-6.24009405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88ed343af45fc195%3A0x98e5b8eaad8e2564!2sCiledugPromo.biz.id%20%7C%20Layanan%20Bisnis%20%26%20Pemasaran!5e0!3m2!1sid!2sid!4v1768642599691!5m2!1sid!2sid" 
-            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy">
         </iframe>
     </div>
 
     <footer>
-        <h2 style="margin-bottom: 20px; font-size: 2rem;">TITAN MECHANIC <span class="text-red">TANGERANG</span></h2>
-        <p style="color: #666; margin-bottom: 30px; font-weight: bold;">Markas Besar Bengkel Mobil Paling Brutal di Tangerang.</p>
+        <h2 style="margin-bottom: 10px; font-family: 'Orbitron'; font-size: 1.5rem; color: #fff;">TITAN <span style="color:var(--magma)">MECHANIC</span></h2>
+        <p style="color: #666; margin-bottom: 30px; font-size: 0.8rem;">ENGINEERED FOR PERFORMANCE.</p>
         
         <div class="tech-partner">
-            <a href="https://ciledugpromo.biz.id/produk/11873/jasa-pembuatan-website-profesional-terima-beres-murah" target="_blank">WEB OPS</a>
-            <a href="https://ciledugpromo.biz.id/produk/10905/jasa-seo-tangerang-terbaik-strategi-posting-1000-website-untuk-dominasi-pasar" target="_blank">SEO INTEL</a>
-            <a href="https://ciledugpromo.biz.id/produk/11874/jasa-landing-page-ciledug-tangerang" target="_blank">LP DEPLOY</a>
+            <a href="https://ciledugpromo.biz.id/produk/11873/jasa-pembuatan-website-profesional-terima-beres-murah" target="_blank">WEB SYSTEM</a>
+            <a href="https://ciledugpromo.biz.id/produk/10905/jasa-seo-tangerang-terbaik-strategi-posting-1000-website-untuk-dominasi-pasar" target="_blank">SEO MODULE</a>
+            <a href="https://ciledugpromo.biz.id/produk/11874/jasa-landing-page-ciledug-tangerang" target="_blank">LP CORE</a>
         </div>
         
-        <p style="margin-top: 40px; font-size: 10px; color: #444; font-weight: bold;">COPYRIGHT 2026. TITAN ENGINE DIVISION.</p>
+        <p style="margin-top: 40px; font-size: 10px; color: #333; font-family: monospace;">SYSTEM V.3.0 | COPYRIGHT 2026</p>
     </footer>
 
 </body>
