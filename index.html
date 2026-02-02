@@ -30,12 +30,14 @@
     <style>
         /* 1. RESET & VARS (COLOR PALETTE: MAGMA CYBER) */
         :root {
-            --magma: #FF4500; /* Orange Lava - Energy/Emergency */
-            --cyan: #00E5FF; /* Cyber Blue - Tech/Scanner */
+            --magma: #FF4500; /* Orange Lava */
+            --cyan: #00E5FF; /* Cyber Blue */
             --dark: #050505;
-            --carbon: #111111;
-            --steel: #2a2a2a;
             --text: #e0e0e0;
+            /* Glass Variables */
+            --glass-bg: rgba(20, 20, 20, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-blur: blur(12px);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -44,13 +46,14 @@
             font-family: 'Rajdhani', sans-serif; 
             overflow-x: hidden; 
             /* Grid Background Pattern */
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
         h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* 2. NAVBAR & LOGO (FIXED LAPTOP ISSUE) */
+        /* 2. NAVBAR */
         nav {
             position: absolute; top: 0; left: 0; width: 100%; z-index: 100;
             padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
@@ -61,12 +64,10 @@
             font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.5rem; color: #fff;
             text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
         }
-        .logo-icon {
-            color: var(--magma); font-size: 2rem;
-        }
+        .logo-icon { color: var(--magma); font-size: 2rem; }
         .logo-text span { color: var(--cyan); }
 
-        /* 3. HERO SECTION (FUTURISTIC) */
+        /* 3. HERO SECTION */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: center;
             position: relative; overflow: hidden;
@@ -74,14 +75,13 @@
         }
         .hero-bg {
             position: absolute; inset: 0; z-index: -1;
-            background: radial-gradient(circle at center, rgba(0,0,0,0.2), var(--dark)),
+            background: radial-gradient(circle at center, rgba(0,0,0,0.3), var(--dark)),
                         url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=1200');
             background-size: cover; background-position: center;
             filter: contrast(1.2) brightness(0.6);
         }
         .hero-content { text-align: center; padding: 20px; position: relative; z-index: 10; max-width: 900px; }
         
-        /* Glitch Effect Title */
         .hero-title { 
             font-size: 3.5rem; line-height: 1.1; color: #fff; 
             text-shadow: 3px 3px 0px rgba(0, 229, 255, 0.3);
@@ -89,23 +89,42 @@
         }
         .hero-title span { color: var(--magma); display: block; font-size: 1.8rem; margin-top: 10px; letter-spacing: 8px; }
 
-        /* 4. BUTTONS */
+        /* 🔥 4. TOMBOL EMERGENCY (EFEK SINAR BERJALAN/NEON) 🔥 */
         .btn-emergency {
             display: inline-block; margin-top: 30px;
-            background: var(--magma); color: #fff; padding: 20px 50px;
+            background: rgba(255, 69, 0, 0.1); /* Transparan dikit biar glass */
+            color: #fff; padding: 20px 50px;
             font-family: 'Orbitron', sans-serif; font-size: 1.2rem; text-decoration: none; font-weight: bold;
-            border: 2px solid var(--magma); position: relative; overflow: hidden;
-            box-shadow: 0 0 30px rgba(255, 69, 0, 0.4);
+            border: 2px solid var(--magma); 
+            position: relative; overflow: hidden; /* Wajib untuk menahan sinar */
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
             transition: 0.3s;
+            backdrop-filter: blur(5px);
             clip-path: polygon(15% 0, 100% 0, 100% 70%, 85% 100%, 0 100%, 0 30%);
         }
-        .btn-emergency:hover { background: transparent; color: var(--magma); box-shadow: 0 0 50px rgba(255, 69, 0, 0.8); }
-        .btn-emergency::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: shine 3s infinite;
+        
+        /* Sinar Berjalan (The Neon Sweep) */
+        .btn-emergency::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -150%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            transform: skewX(-20deg);
+            animation: neon-sweep 3s infinite linear;
         }
-        @keyframes shine { 0% { left: -100%; } 20% { left: 100%; } 100% { left: 100%; } }
+        
+        @keyframes neon-sweep {
+            0% { left: -150%; }
+            20% { left: 150%; } /* Sinar lewat cepat */
+            100% { left: 150%; } /* Jeda lama */
+        }
+        
+        .btn-emergency:hover { 
+            background: var(--magma); 
+            box-shadow: 0 0 50px rgba(255, 69, 0, 1); 
+            text-shadow: 0 0 10px #fff;
+        }
 
         /* 5. STATS HUD */
         .stats-bar { 
@@ -115,52 +134,82 @@
         .stat-num { font-size: 2.5rem; font-family: 'Orbitron'; color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
         .stat-label { font-size: 0.9rem; letter-spacing: 2px; color: #888; }
 
-        /* 6. UTILITIES & GRID */
+        /* 6. UTILITIES */
         .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
-        /* 7. GALLERY (IMAGE FIX) */
+        /* 7. GALLERY */
         .gallery-item { 
             height: 250px; border: 1px solid var(--cyan); position: relative; overflow: hidden; 
             border-radius: 5px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
         }
         .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; filter: grayscale(80%); }
         .gallery-item:hover .gallery-img { transform: scale(1.1); filter: grayscale(0%); }
-        /* Overlay Text on Image */
         .gallery-text {
             position: absolute; bottom: 0; left: 0; width: 100%; padding: 10px;
             background: rgba(0,0,0,0.8); color: var(--cyan); font-family: 'Orbitron'; font-size: 0.8rem; text-align: center;
         }
 
-        /* 8. SERVICES (HOLOGRAPHIC CARD) */
+        /* 🔥 8. TITAN SERVICE (GLASSMORPHISM BRUTAL) 🔥 */
         .service-card {
-            background: rgba(20, 20, 20, 0.6); border: 1px solid #333; padding: 30px;
-            text-align: center; transition: 0.4s; position: relative; overflow: hidden;
-            backdrop-filter: blur(5px);
+            /* Glass Effect Utama */
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-top: 1px solid rgba(255, 255, 255, 0.2); /* Highlight atas */
+            
+            padding: 30px; text-align: center; transition: 0.4s; position: relative; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 10px;
         }
-        .service-card:hover { 
-            border-color: var(--magma); 
-            box-shadow: 0 0 30px rgba(255, 69, 0, 0.2), inset 0 0 20px rgba(255, 69, 0, 0.1); 
-            transform: translateY(-5px);
-        }
-        .icon { font-size: 3rem; color: var(--cyan); margin-bottom: 20px; display: block; text-shadow: 0 0 15px var(--cyan); }
-        .service-card:hover .icon { color: var(--magma); text-shadow: 0 0 15px var(--magma); }
         
-        /* 9. PRICING (DIAGNOSTIC SCREEN LOOK) */
+        /* Efek Hover Glowing */
+        .service-card:hover { 
+            border-color: var(--cyan);
+            background: rgba(0, 229, 255, 0.05); /* Cyan tint saat hover */
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.2); 
+            transform: translateY(-10px);
+        }
+        
+        /* Garis Laser di atas kartu */
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+            transform: scaleX(0); transition: 0.4s;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+
+        .icon { font-size: 3rem; color: var(--cyan); margin-bottom: 20px; display: block; text-shadow: 0 0 15px rgba(0, 229, 255, 0.4); }
+        .service-card:hover .icon { color: #fff; transform: scale(1.1); transition: 0.3s; }
+        
+        /* 🔥 9. ESTIMATED COST (GLASS TABLE) 🔥 */
         .price-box { 
             max-width: 700px; margin: 0 auto; 
-            background: rgba(10, 10, 10, 0.9); border: 1px solid var(--cyan); 
-            padding: 20px; position: relative;
+            /* Glass Effect */
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            
+            padding: 20px; position: relative; border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
-        /* Corner Accents */
-        .price-box::before { content: ''; position: absolute; top: -2px; left: -2px; width: 20px; height: 20px; border-top: 2px solid var(--magma); border-left: 2px solid var(--magma); }
-        .price-box::after { content: ''; position: absolute; bottom: -2px; right: -2px; width: 20px; height: 20px; border-bottom: 2px solid var(--magma); border-right: 2px solid var(--magma); }
+        /* Corner Accents (Siku Neon) */
+        .price-box::before { content: ''; position: absolute; top: -1px; left: -1px; width: 30px; height: 30px; border-top: 3px solid var(--magma); border-left: 3px solid var(--magma); border-radius: 10px 0 0 0; }
+        .price-box::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 30px; height: 30px; border-bottom: 3px solid var(--magma); border-right: 3px solid var(--magma); border-radius: 0 0 10px 0; }
         
         .price-row { 
-            display: flex; justify-content: space-between; padding: 15px; 
-            border-bottom: 1px solid #333; font-size: 1.1rem; color: #ccc;
+            display: flex; justify-content: space-between; padding: 18px; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+            font-size: 1.1rem; color: #ccc; transition: 0.3s;
         }
-        .price-val { color: var(--magma); font-family: 'Orbitron'; font-weight: bold; }
+        .price-row:last-child { border-bottom: none; }
+        
+        .price-row:hover { 
+            background: rgba(255, 69, 0, 0.1); 
+            padding-left: 25px; padding-right: 25px; /* Efek membesar ke samping */
+            color: #fff;
+        }
+        .price-val { color: var(--magma); font-family: 'Orbitron'; font-weight: bold; text-shadow: 0 0 10px rgba(255, 69, 0, 0.4); }
 
         /* 10. FOOTER */
         footer { background: #020202; padding: 60px 0; text-align: center; border-top: 1px solid var(--cyan); }
@@ -198,6 +247,7 @@
             <p style="margin-top: 20px; font-size: 1.2rem; color: #ddd; text-shadow: 1px 1px 2px #000;">
                 Teknologi Scan ECU Tercanggih. Mekanik Bersertifikat. Solusi Presisi.
             </p>
+            
             <a href="https://wa.me/6285283212205?text=DARURAT!%20MOBIL%20SAYA%20MOGOK" class="btn-emergency">
                 🚨 EMERGENCY RESCUE
             </a>
@@ -251,32 +301,32 @@
             <div class="service-card">
                 <span class="icon">💻</span>
                 <h3>ECU SCANNING</h3>
-                <p style="color:#aaa; margin-top: 10px;">Diagnosa komputer akurat. Hapus indikator Check Engine & reset sistem.</p>
+                <p style="color:#bbb; margin-top: 10px;">Diagnosa komputer akurat. Hapus indikator Check Engine & reset sistem.</p>
             </div>
             <div class="service-card">
                 <span class="icon">⚙️</span>
                 <h3>ENGINE OVERHAUL</h3>
-                <p style="color:#aaa; margin-top: 10px;">Turun mesin total dengan presisi pabrikan. Garansi tenaga kembali.</p>
+                <p style="color:#bbb; margin-top: 10px;">Turun mesin total dengan presisi pabrikan. Garansi tenaga kembali.</p>
             </div>
             <div class="service-card">
                 <span class="icon">🔋</span>
                 <h3>ELECTRICAL</h3>
-                <p style="color:#aaa; margin-top: 10px;">Perbaikan kelistrikan, urut kabel body, alternator, dan dinamo starter.</p>
+                <p style="color:#bbb; margin-top: 10px;">Perbaikan kelistrikan, urut kabel body, alternator, dan dinamo starter.</p>
             </div>
             <div class="service-card">
                 <span class="icon">❄️</span>
                 <h3>AC SYSTEM</h3>
-                <p style="color:#aaa; margin-top: 10px;">Flushing mesin AC komputerisasi. Dingin maksimal, bebas bau.</p>
+                <p style="color:#bbb; margin-top: 10px;">Flushing mesin AC komputerisasi. Dingin maksimal, bebas bau.</p>
             </div>
             <div class="service-card">
                 <span class="icon">🔧</span>
                 <h3>SUSPENSION</h3>
-                <p style="color:#aaa; margin-top: 10px;">Hilangkan bunyi kaki-kaki. Press tie rod, rack steer, dan shockbreaker.</p>
+                <p style="color:#bbb; margin-top: 10px;">Hilangkan bunyi kaki-kaki. Press tie rod, rack steer, dan shockbreaker.</p>
             </div>
             <div class="service-card">
                 <span class="icon">🚨</span>
                 <h3>TOWING 24H</h3>
-                <p style="color:#aaa; margin-top: 10px;">Unit derek gendong (towing) standby 24 jam untuk evakuasi darurat.</p>
+                <p style="color:#bbb; margin-top: 10px;">Unit derek gendong (towing) standby 24 jam untuk evakuasi darurat.</p>
             </div>
         </div>
     </section>
@@ -330,7 +380,7 @@
             <a href="https://ciledugpromo.biz.id/produk/11874/jasa-landing-page-ciledug-tangerang" target="_blank">LP CORE</a>
         </div>
         
-        <p style="margin-top: 40px; font-size: 10px; color: #333; font-family: monospace;">SYSTEM V.3.0 | COPYRIGHT 2026</p>
+        <p style="margin-top: 40px; font-size: 10px; color: #333; font-family: monospace;">SYSTEM V.4.0 | COPYRIGHT 2026</p>
     </footer>
 
 </body>
