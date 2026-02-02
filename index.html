@@ -2,9 +2,10 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TITAN MECHANIC | Bengkel Mobil 24 Jam Tangerang & Scan ECU</title>
     <meta name="description" content="Bengkel Mobil Tercanggih di Tangerang. Spesialis Scan ECU, Turun Mesin, Matic, dan Kaki-kaki. Layanan Darurat 24 Jam.">
+    <meta name="theme-color" content="#FF4500">
     <meta name="robots" content="index, follow">
 
     <meta name="google-site-verification" content="PASTE_KODE_GSC_DISINI" />
@@ -28,204 +29,195 @@
     </script>
 
     <style>
-        /* 1. RESET & VARS (COLOR PALETTE: MAGMA CYBER) */
+        /* 1. CORE VARIABLES */
         :root {
-            --magma: #FF4500; /* Orange Lava */
-            --cyan: #00E5FF; /* Cyber Blue */
+            --magma: #FF4500;
+            --cyan: #00E5FF;
             --dark: #050505;
             --text: #e0e0e0;
-            /* Glass Variables */
-            --glass-bg: rgba(20, 20, 20, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-blur: blur(12px);
+            --glass-bg: rgba(20, 20, 20, 0.85); /* Lebih gelap di HP biar teks jelas */
+            --glass-border: rgba(255, 255, 255, 0.15);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
         body { 
             background-color: var(--dark); 
             color: var(--text); 
             font-family: 'Rajdhani', sans-serif; 
             overflow-x: hidden; 
-            /* Grid Background Pattern */
             background-image: 
-                linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
+                linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            padding-bottom: 100px; /* Ruang untuk tombol melayang */
         }
-        h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* 2. NAVBAR */
+        /* 2. NAVBAR (COMPACT FOR MOBILE) */
         nav {
             position: absolute; top: 0; left: 0; width: 100%; z-index: 100;
-            padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
+            padding: 20px; display: flex; justify-content: center;
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
         }
         .logo-wrap {
-            display: flex; align-items: center; gap: 10px;
-            font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.5rem; color: #fff;
+            display: flex; align-items: center; gap: 8px;
+            font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff;
             text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
         }
-        .logo-icon { color: var(--magma); font-size: 2rem; }
+        .logo-icon { color: var(--magma); font-size: 1.8rem; animation: pulse-logo 2s infinite; }
+        @keyframes pulse-logo { 0%,100%{text-shadow: 0 0 10px var(--magma);} 50%{text-shadow: 0 0 25px var(--magma);} }
         .logo-text span { color: var(--cyan); }
 
         /* 3. HERO SECTION */
         .hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center;
+            min-height: 100vh; /* Better for mobile browsers */
+            display: flex; align-items: center; justify-content: center;
             position: relative; overflow: hidden;
             border-bottom: 3px solid var(--magma);
         }
         .hero-bg {
             position: absolute; inset: 0; z-index: -1;
-            background: radial-gradient(circle at center, rgba(0,0,0,0.3), var(--dark)),
-                        url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=1200');
+            background: radial-gradient(circle at center, rgba(0,0,0,0.4), var(--dark)),
+                        url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=800'); /* Optimized Image */
             background-size: cover; background-position: center;
             filter: contrast(1.2) brightness(0.6);
         }
-        .hero-content { text-align: center; padding: 20px; position: relative; z-index: 10; max-width: 900px; }
+        .hero-content { text-align: center; padding: 20px; position: relative; z-index: 10; width: 100%; }
         
         .hero-title { 
-            font-size: 3.5rem; line-height: 1.1; color: #fff; 
-            text-shadow: 3px 3px 0px rgba(0, 229, 255, 0.3);
-            margin-bottom: 20px;
+            font-size: 2.8rem; line-height: 1.1; color: #fff; 
+            text-shadow: 2px 2px 0px rgba(0, 229, 255, 0.3);
+            margin-bottom: 15px;
         }
-        .hero-title span { color: var(--magma); display: block; font-size: 1.8rem; margin-top: 10px; letter-spacing: 8px; }
-
-        /* 🔥 4. TOMBOL EMERGENCY (EFEK SINAR BERJALAN/NEON) 🔥 */
-        .btn-emergency {
-            display: inline-block; margin-top: 30px;
-            background: rgba(255, 69, 0, 0.1); /* Transparan dikit biar glass */
-            color: #fff; padding: 20px 50px;
-            font-family: 'Orbitron', sans-serif; font-size: 1.2rem; text-decoration: none; font-weight: bold;
-            border: 2px solid var(--magma); 
-            position: relative; overflow: hidden; /* Wajib untuk menahan sinar */
-            box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
-            transition: 0.3s;
-            backdrop-filter: blur(5px);
-            clip-path: polygon(15% 0, 100% 0, 100% 70%, 85% 100%, 0 100%, 0 30%);
-        }
-        
-        /* Sinar Berjalan (The Neon Sweep) */
-        .btn-emergency::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -150%;
-            width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-            transform: skewX(-20deg);
-            animation: neon-sweep 3s infinite linear;
-        }
-        
-        @keyframes neon-sweep {
-            0% { left: -150%; }
-            20% { left: 150%; } /* Sinar lewat cepat */
-            100% { left: 150%; } /* Jeda lama */
-        }
-        
-        .btn-emergency:hover { 
-            background: var(--magma); 
-            box-shadow: 0 0 50px rgba(255, 69, 0, 1); 
-            text-shadow: 0 0 10px #fff;
+        .hero-title span { 
+            color: var(--magma); display: block; font-size: 1.5rem; margin-top: 5px; letter-spacing: 4px; 
+            background: rgba(0,0,0,0.5); padding: 5px; /* Biar kebaca di HP */
         }
 
-        /* 5. STATS HUD */
+        /* 4. STATS HUD (GRID DI HP) */
         .stats-bar { 
-            background: rgba(17, 17, 17, 0.9); border-top: 1px solid var(--cyan); border-bottom: 1px solid var(--cyan);
-            padding: 30px 0; color: #fff; text-align: center; backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.95); border-bottom: 1px solid var(--cyan);
+            padding: 20px 10px; color: #fff; backdrop-filter: blur(10px);
         }
-        .stat-num { font-size: 2.5rem; font-family: 'Orbitron'; color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
-        .stat-label { font-size: 0.9rem; letter-spacing: 2px; color: #888; }
+        .stats-container {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; text-align: center;
+        }
+        .stat-num { font-size: 1.5rem; font-family: 'Orbitron'; color: var(--cyan); display: block; }
+        .stat-label { font-size: 0.6rem; letter-spacing: 1px; color: #999; }
 
-        /* 6. UTILITIES */
-        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        /* 5. UTILITIES */
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; color: #fff; }
+
+        /* 🔥 6. HORIZONTAL SWIPE CONTAINER (MOBILE MAGIC) 🔥 */
+        .swipe-wrapper {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+
+        /* KHUSUS HP: JADI SWIPE KESAMPING */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+            .swipe-wrapper {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 30px; /* Space bayangan */
+                gap: 20px;
+                margin: 0 -20px; padding-left: 20px; padding-right: 20px; /* Full width swipe */
+                -webkit-overflow-scrolling: touch;
+            }
+            .swipe-wrapper::-webkit-scrollbar { display: none; } /* Hide scrollbar */
+            
+            .service-card, .gallery-item {
+                min-width: 280px; /* Lebar kartu di HP */
+                scroll-snap-align: center;
+            }
+        }
         
         /* 7. GALLERY */
         .gallery-item { 
-            height: 250px; border: 1px solid var(--cyan); position: relative; overflow: hidden; 
-            border-radius: 5px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
+            height: 220px; border: 1px solid var(--cyan); position: relative; overflow: hidden; 
+            border-radius: 8px; box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
         }
-        .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; filter: grayscale(80%); }
-        .gallery-item:hover .gallery-img { transform: scale(1.1); filter: grayscale(0%); }
+        .gallery-img { width: 100%; height: 100%; object-fit: cover; }
         .gallery-text {
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 10px;
-            background: rgba(0,0,0,0.8); color: var(--cyan); font-family: 'Orbitron'; font-size: 0.8rem; text-align: center;
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 8px;
+            background: rgba(0,0,0,0.8); color: var(--cyan); font-family: 'Orbitron'; font-size: 0.7rem; text-align: center;
         }
 
-        /* 🔥 8. TITAN SERVICE (GLASSMORPHISM BRUTAL) 🔥 */
+        /* 🔥 8. TITAN SERVICE (AUTO GLOW DI HP) 🔥 */
         .service-card {
-            /* Glass Effect Utama */
             background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            border-top: 1px solid rgba(255, 255, 255, 0.2); /* Highlight atas */
-            
-            padding: 30px; text-align: center; transition: 0.4s; position: relative; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border-radius: 10px;
+            padding: 25px; text-align: center; position: relative; overflow: hidden;
+            border-radius: 12px;
+            /* Auto Glow Animation untuk HP */
+            animation: border-pulse 4s infinite;
         }
         
-        /* Efek Hover Glowing */
-        .service-card:hover { 
-            border-color: var(--cyan);
-            background: rgba(0, 229, 255, 0.05); /* Cyan tint saat hover */
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.2); 
-            transform: translateY(-10px);
+        @keyframes border-pulse {
+            0% { border-color: var(--glass-border); box-shadow: none; }
+            50% { border-color: var(--cyan); box-shadow: 0 0 20px rgba(0, 229, 255, 0.2); }
+            100% { border-color: var(--glass-border); box-shadow: none; }
         }
-        
-        /* Garis Laser di atas kartu */
-        .service-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-            transform: scaleX(0); transition: 0.4s;
-        }
-        .service-card:hover::before { transform: scaleX(1); }
 
-        .icon { font-size: 3rem; color: var(--cyan); margin-bottom: 20px; display: block; text-shadow: 0 0 15px rgba(0, 229, 255, 0.4); }
-        .service-card:hover .icon { color: #fff; transform: scale(1.1); transition: 0.3s; }
-        
-        /* 🔥 9. ESTIMATED COST (GLASS TABLE) 🔥 */
+        .icon { font-size: 2.5rem; color: var(--cyan); margin-bottom: 15px; display: block; text-shadow: 0 0 10px rgba(0, 229, 255, 0.4); }
+        .service-card h3 { color: #fff; font-size: 1.1rem; margin-bottom: 5px; }
+        .service-card p { font-size: 0.9rem; color: #ccc; }
+
+        /* 🔥 9. ESTIMATED COST (MOBILE OPTIMIZED) 🔥 */
         .price-box { 
-            max-width: 700px; margin: 0 auto; 
-            /* Glass Effect */
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            background: rgba(10, 10, 10, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            
-            padding: 20px; position: relative; border-radius: 15px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            padding: 15px; border-radius: 15px; position: relative;
         }
-        /* Corner Accents (Siku Neon) */
-        .price-box::before { content: ''; position: absolute; top: -1px; left: -1px; width: 30px; height: 30px; border-top: 3px solid var(--magma); border-left: 3px solid var(--magma); border-radius: 10px 0 0 0; }
-        .price-box::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 30px; height: 30px; border-bottom: 3px solid var(--magma); border-right: 3px solid var(--magma); border-radius: 0 0 10px 0; }
+        .price-box::before { content: ''; position: absolute; top: 0; left: 0; width: 20px; height: 20px; border-top: 3px solid var(--magma); border-left: 3px solid var(--magma); }
+        .price-box::after { content: ''; position: absolute; bottom: 0; right: 0; width: 20px; height: 20px; border-bottom: 3px solid var(--magma); border-right: 3px solid var(--magma); }
         
         .price-row { 
-            display: flex; justify-content: space-between; padding: 18px; 
-            border-bottom: 1px solid rgba(255,255,255,0.05); 
-            font-size: 1.1rem; color: #ccc; transition: 0.3s;
+            display: flex; justify-content: space-between; align-items: center; padding: 15px 0; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; color: #ccc;
         }
-        .price-row:last-child { border-bottom: none; }
-        
-        .price-row:hover { 
-            background: rgba(255, 69, 0, 0.1); 
-            padding-left: 25px; padding-right: 25px; /* Efek membesar ke samping */
-            color: #fff;
-        }
-        .price-val { color: var(--magma); font-family: 'Orbitron'; font-weight: bold; text-shadow: 0 0 10px rgba(255, 69, 0, 0.4); }
+        .price-val { color: var(--magma); font-family: 'Orbitron'; font-weight: bold; background: rgba(255, 69, 0, 0.1); padding: 5px 10px; border-radius: 4px; }
 
-        /* 10. FOOTER */
-        footer { background: #020202; padding: 60px 0; text-align: center; border-top: 1px solid var(--cyan); }
-        .tech-partner a { 
-            color: #555; border: 1px solid #333; padding: 5px 15px; margin: 5px; display: inline-block; 
-            font-size: 10px; text-decoration: none; font-family: 'Orbitron'; transition: 0.3s;
+        /* 🔥 10. STICKY FLOATING BUTTON (MOBILE HERO) 🔥 */
+        .sticky-btn-wrapper {
+            position: fixed; bottom: 20px; left: 0; width: 100%; 
+            display: flex; justify-content: center; z-index: 999;
+            padding: 0 20px;
         }
-        .tech-partner a:hover { color: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+        .btn-emergency-float {
+            width: 100%; max-width: 500px;
+            background: var(--magma); color: #fff; 
+            padding: 15px; text-align: center;
+            font-family: 'Orbitron', sans-serif; font-size: 1.1rem; text-decoration: none; font-weight: bold;
+            border: 2px solid #fff; border-radius: 50px; /* Rounded pill */
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.6);
+            position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            animation: float-pulse 2s infinite;
+        }
+        @keyframes float-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 69, 0, 0.6); }
+            50% { transform: scale(1.02); box-shadow: 0 0 40px rgba(255, 69, 0, 0.9); }
+            100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 69, 0, 0.6); }
+        }
+        /* Sinar Kilat */
+        .btn-emergency-float::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transform: skewX(-20deg); animation: neon-sweep 3s infinite linear;
+        }
+        @keyframes neon-sweep { 0% { left: -100%; } 20% { left: 150%; } 100% { left: 150%; } }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .hero-title span { font-size: 1.2rem; }
-            nav { padding: 20px; }
-            .logo-text { font-size: 1.2rem; }
+        /* 11. MAP & FOOTER */
+        .map-container {
+            height: 350px; border-top: 2px solid var(--magma); border-bottom: 2px solid var(--magma); position: relative;
         }
+        footer { background: #020202; padding: 40px 0 80px 0; text-align: center; border-top: 1px solid var(--cyan); }
+        .tech-partner a { color: #555; border: 1px solid #333; padding: 5px 10px; margin: 3px; display: inline-block; font-size: 9px; text-decoration: none; font-family: 'Orbitron'; }
+
     </style>
 </head>
 <body>
@@ -242,127 +234,117 @@
         <div class="hero-content">
             <h1 class="hero-title">
                 ADVANCED
-                <span>AUTO DIAGNOSTIC & REPAIR</span>
+                <span>AUTO REPAIR</span>
             </h1>
-            <p style="margin-top: 20px; font-size: 1.2rem; color: #ddd; text-shadow: 1px 1px 2px #000;">
-                Teknologi Scan ECU Tercanggih. Mekanik Bersertifikat. Solusi Presisi.
+            <p style="margin-top: 10px; font-size: 1rem; color: #ddd; text-shadow: 1px 1px 2px #000; padding: 0 20px;">
+                Spesialis Scan ECU & Turun Mesin.<br>Teknologi Bengkel Masa Depan.
             </p>
-            
-            <a href="https://wa.me/6285283212205?text=DARURAT!%20MOBIL%20SAYA%20MOGOK" class="btn-emergency">
-                🚨 EMERGENCY RESCUE
-            </a>
-        </div>
+            </div>
     </header>
 
     <div class="stats-bar">
-        <div class="container" style="padding: 0; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
+        <div class="stats-container">
             <div>
-                <div class="stat-num">24/7</div>
-                <div class="stat-label">RAPID RESPONSE</div>
+                <span class="stat-num">24/7</span>
+                <span class="stat-label">DARURAT</span>
             </div>
             <div>
-                <div class="stat-num">100%</div>
-                <div class="stat-label">ACCURATE SCAN</div>
+                <span class="stat-num">100%</span>
+                <span class="stat-label">AKURAT</span>
             </div>
             <div>
-                <div class="stat-num">TOP</div>
-                <div class="stat-label">RATED WORKSHOP</div>
+                <span class="stat-num">4.9★</span>
+                <span class="stat-label">RATING</span>
             </div>
         </div>
     </div>
 
-    <section style="padding: 80px 0; background: #080808;">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: #fff;">
-                REAL <span style="color:var(--magma)">CAPABILITIES</span>
-            </h2>
-            <div class="grid-3">
+    <section style="padding: 60px 0; background: #080808;">
+        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+            <h2 class="section-title">REAL <span style="color:var(--magma)">ACTION</span></h2>
+            
+            <div class="swipe-wrapper">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?q=80&w=500" class="gallery-img" alt="Under Car Service">
-                    <div class="gallery-text">UNDERCARRIAGE SPECIALIST</div>
+                    <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?q=80&w=500" class="gallery-img" alt="Service">
+                    <div class="gallery-text">UNDERCARRIAGE</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=500" class="gallery-img" alt="ECU Diagnostic">
-                    <div class="gallery-text">COMPUTERIZED DIAGNOSTIC</div>
+                    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=500" class="gallery-img" alt="Diagnostic">
+                    <div class="gallery-text">DIAGNOSTIC</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=500" class="gallery-img" alt="Engine Turbo">
-                    <div class="gallery-text">ENGINE PRECISION</div>
+                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=500" class="gallery-img" alt="Engine">
+                    <div class="gallery-text">ENGINE BAY</div>
                 </div>
             </div>
+            <p style="text-align: center; font-size: 0.7rem; color: #666; margin-top: 10px; display: block;">&larr; GESER UNTUK MELIHAT &rarr;</p>
         </div>
     </section>
 
     <section class="container">
-        <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: #fff;">
-            TITAN <span style="color:var(--cyan)">SERVICES</span>
-        </h2>
-        <div class="grid-3">
+        <h2 class="section-title">TITAN <span style="color:var(--cyan)">SERVICES</span></h2>
+        
+        <div class="swipe-wrapper">
             <div class="service-card">
                 <span class="icon">💻</span>
                 <h3>ECU SCANNING</h3>
-                <p style="color:#bbb; margin-top: 10px;">Diagnosa komputer akurat. Hapus indikator Check Engine & reset sistem.</p>
+                <p>Diagnosa komputer akurat. Hapus Check Engine & reset sistem.</p>
             </div>
             <div class="service-card">
                 <span class="icon">⚙️</span>
                 <h3>ENGINE OVERHAUL</h3>
-                <p style="color:#bbb; margin-top: 10px;">Turun mesin total dengan presisi pabrikan. Garansi tenaga kembali.</p>
-            </div>
-            <div class="service-card">
-                <span class="icon">🔋</span>
-                <h3>ELECTRICAL</h3>
-                <p style="color:#bbb; margin-top: 10px;">Perbaikan kelistrikan, urut kabel body, alternator, dan dinamo starter.</p>
+                <p>Turun mesin presisi pabrikan. Tenaga kembali prima.</p>
             </div>
             <div class="service-card">
                 <span class="icon">❄️</span>
                 <h3>AC SYSTEM</h3>
-                <p style="color:#bbb; margin-top: 10px;">Flushing mesin AC komputerisasi. Dingin maksimal, bebas bau.</p>
+                <p>Flushing mesin AC komputerisasi. Dingin maksimal.</p>
             </div>
             <div class="service-card">
                 <span class="icon">🔧</span>
-                <h3>SUSPENSION</h3>
-                <p style="color:#bbb; margin-top: 10px;">Hilangkan bunyi kaki-kaki. Press tie rod, rack steer, dan shockbreaker.</p>
+                <h3>KAKI-KAKI</h3>
+                <p>Hilangkan bunyi, press tie rod & shockbreaker.</p>
             </div>
             <div class="service-card">
                 <span class="icon">🚨</span>
                 <h3>TOWING 24H</h3>
-                <p style="color:#bbb; margin-top: 10px;">Unit derek gendong (towing) standby 24 jam untuk evakuasi darurat.</p>
+                <p>Layanan derek gendong darurat standby 24 jam.</p>
             </div>
         </div>
+        <p style="text-align: center; font-size: 0.7rem; color: #666; margin-top: 10px; display: block;">&larr; GESER LAYANAN &rarr;</p>
     </section>
 
-    <section style="background: #020202; padding: 80px 0; border-top: 1px solid #222;">
+    <section style="background: #020202; padding: 60px 0; border-top: 1px solid #222;">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px; font-size: 2rem; color: #fff;">ESTIMATED <span style="color:var(--magma)">COST</span></h2>
+            <h2 class="section-title" style="font-size: 1.8rem;">ESTIMASI <span style="color:var(--magma)">BIAYA</span></h2>
             <div class="price-box">
                 <div class="price-row">
-                    <span>Computer Diagnostic (Scan)</span>
-                    <span class="price-val">Start 150k</span>
+                    <span>Scan Diagnosa</span>
+                    <span class="price-val">150k</span>
                 </div>
                 <div class="price-row">
-                    <span>Tune Up (Carbon Clean)</span>
-                    <span class="price-val">Start 350k</span>
+                    <span>Tune Up Carbon</span>
+                    <span class="price-val">350k</span>
                 </div>
                 <div class="price-row">
-                    <span>Brake Service (4 Wheels)</span>
-                    <span class="price-val">Start 300k</span>
+                    <span>Service Rem (4 Roda)</span>
+                    <span class="price-val">300k</span>
                 </div>
                 <div class="price-row">
-                    <span>AC Maintenance (Freon+Oil)</span>
-                    <span class="price-val">Start 250k</span>
+                    <span>Service AC (Freon+Oli)</span>
+                    <span class="price-val">250k</span>
                 </div>
                 <div class="price-row">
-                    <span>Emergency Roadside (Jasa)</span>
-                    <span class="price-val">Start 100k</span>
+                    <span>Jasa Derek (Start)</span>
+                    <span class="price-val">100k</span>
                 </div>
             </div>
-            <p style="text-align: center; color: #555; margin-top: 20px; font-size: 0.8rem; font-family: monospace;">[SYSTEM MESSAGE]: Harga estimasi awal. Final cost setelah pengecekan fisik.</p>
         </div>
     </section>
 
-    <div style="height: 450px; border-top: 2px solid var(--magma); border-bottom: 2px solid var(--magma); position: relative;">
-        <div style="position: absolute; top: 20px; left: 20px; background: rgba(0,0,0,0.8); color: var(--cyan); padding: 10px; font-family: monospace; z-index: 10; border: 1px solid var(--cyan);">
-            GPS: TARGET LOCKED<br>LOC: TANGERANG HQ
+    <div class="map-container">
+        <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.8); color: var(--cyan); padding: 5px 10px; font-family: monospace; z-index: 10; border: 1px solid var(--cyan); font-size: 0.8rem;">
+            LOC: TANGERANG HQ
         </div>
         <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15864.716909516854!2d106.704859!3d-6.24009405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88ed343af45fc195%3A0x98e5b8eaad8e2564!2sCiledugPromo.biz.id%20%7C%20Layanan%20Bisnis%20%26%20Pemasaran!5e0!3m2!1sid!2sid!4v1768642599691!5m2!1sid!2sid" 
@@ -371,8 +353,7 @@
     </div>
 
     <footer>
-        <h2 style="margin-bottom: 10px; font-family: 'Orbitron'; font-size: 1.5rem; color: #fff;">TITAN <span style="color:var(--magma)">MECHANIC</span></h2>
-        <p style="color: #666; margin-bottom: 30px; font-size: 0.8rem;">ENGINEERED FOR PERFORMANCE.</p>
+        <h2 style="margin-bottom: 10px; font-family: 'Orbitron'; font-size: 1.2rem; color: #fff;">TITAN <span style="color:var(--magma)">MECHANIC</span></h2>
         
         <div class="tech-partner">
             <a href="https://ciledugpromo.biz.id/produk/11873/jasa-pembuatan-website-profesional-terima-beres-murah" target="_blank">WEB SYSTEM</a>
@@ -380,8 +361,14 @@
             <a href="https://ciledugpromo.biz.id/produk/11874/jasa-landing-page-ciledug-tangerang" target="_blank">LP CORE</a>
         </div>
         
-        <p style="margin-top: 40px; font-size: 10px; color: #333; font-family: monospace;">SYSTEM V.4.0 | COPYRIGHT 2026</p>
+        <p style="margin-top: 30px; font-size: 9px; color: #333; font-family: monospace;">SYSTEM V.5.0 MOBILE | COPYRIGHT 2026</p>
     </footer>
+
+    <div class="sticky-btn-wrapper">
+        <a href="https://wa.me/6285283212205?text=DARURAT!%20MOBIL%20SAYA%20MOGOK" class="btn-emergency-float">
+            🚨 DARURAT? PANGGIL KAMI
+        </a>
+    </div>
 
 </body>
 </html>
