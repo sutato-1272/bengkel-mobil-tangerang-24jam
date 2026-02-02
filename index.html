@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITAN MECHANIC | Bengkel Mobil 24 Jam & Service Panggilan</title>
+    <meta name="description" content="Bengkel Mobil Terpercaya 24 Jam. Melayani Service Mesin, Ganti Oli, Tune Up, dan Derek Towing. Teknisi Bersertifikat. Hubungi Kami Sekarang.">
+    <meta name="robots" content="index, follow">
+
+    <meta name="google-site-verification" content="PASTE_KODE_GSC_DISINI" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "name": "Titan Mechanic Pro",
+      "image": "https://images.unsplash.com/photo-1599474924187-334a4ae5bd3c?q=80&w=1200",
+      "telephone": "6285283212205",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tangerang",
+        "addressRegion": "Banten"
+      },
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        /* 1. RESET & VARS */
+        :root {
+            --red: #ff3333;
+            --dark: #0f0f0f;
+            --carbon: #1a1a1a;
+            --steel: #333;
+            --text: #e0e0e0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--dark); 
+            color: var(--text); 
+            font-family: 'Roboto', sans-serif; 
+            overflow-x: hidden; 
+        }
+        h1, h2, h3 { font-family: 'Russo One', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* 2. BACKGROUND PATTERN (CARBON FIBER LOOK) */
+        .bg-carbon {
+            background-color: var(--dark);
+            background-image: radial-gradient(#333 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* 3. HERO SECTION */
+        .hero {
+            height: 90vh; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.6)),
+                        url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1200');
+            background-size: cover; background-position: center;
+            text-align: center; padding: 20px; border-bottom: 5px solid var(--red);
+        }
+        .hero-title { font-size: 3.5rem; line-height: 1; color: #fff; text-shadow: 0 0 20px rgba(0,0,0,0.8); }
+        .hero-title span { color: var(--red); display: block; font-size: 1.5rem; margin-top: 10px; letter-spacing: 5px; }
+        
+        /* 4. EMERGENCY BUTTON (PULSE ANIMATION) */
+        .btn-emergency {
+            display: inline-block; margin-top: 30px;
+            background: var(--red); color: #fff; padding: 20px 50px;
+            font-family: 'Russo One', sans-serif; font-size: 1.2rem; text-decoration: none;
+            border-radius: 5px; border: 2px solid #fff;
+            box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7);
+            animation: pulse-red 1.5s infinite;
+            clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
+        }
+        @keyframes pulse-red {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(255, 51, 51, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
+        }
+
+        /* 5. SERVICE GRID */
+        .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        
+        .service-card {
+            background: var(--carbon); border: 1px solid var(--steel); padding: 30px;
+            text-align: center; transition: 0.3s; position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--red);
+            transform: scaleX(0); transition: 0.4s; transform-origin: left;
+        }
+        .service-card:hover { transform: translateY(-5px); border-color: var(--red); }
+        .service-card:hover::before { transform: scaleX(1); }
+        
+        .icon { font-size: 3rem; color: var(--red); margin-bottom: 20px; display: block; }
+
+        /* 6. STATS (TRUST) */
+        .stats-bar { background: var(--red); padding: 40px 0; color: #fff; text-align: center; }
+        .stat-num { font-size: 3rem; font-family: 'Russo One'; }
+        .stat-label { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+
+        /* 7. PRICING TABLE (DARK) */
+        .price-row { 
+            display: flex; justify-content: space-between; padding: 15px; 
+            border-bottom: 1px solid #333; transition: 0.3s;
+        }
+        .price-row:hover { background: #222; padding-left: 25px; border-left: 3px solid var(--red); }
+        .price-val { color: var(--red); font-weight: bold; }
+
+        /* 8. FOOTER & NAGA */
+        footer { background: #000; padding: 50px 0; text-align: center; border-top: 3px solid #333; }
+        .tech-partner { margin-top: 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; opacity: 0.7; }
+        .tech-partner a { font-size: 11px; color: #888; text-decoration: none; font-family: monospace; transition: 0.3s; text-transform: uppercase; border: 1px solid #333; padding: 5px 10px; }
+        .tech-partner a:hover { color: var(--red); border-color: var(--red); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-title span { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div>
+            <h1 class="hero-title">
+                TITAN MECHANIC
+                <span>PROFESSIONAL AUTO CARE</span>
+            </h1>
+            <p style="margin-top: 20px; font-size: 1.2rem; color: #ccc;">Solusi Tepat, Cepat, & Terpercaya untuk Kendaraan Anda.</p>
+            <a href="https://wa.me/6285283212205?text=TOLONG%20MOBIL%20SAYA%20MOGOK!" class="btn-emergency">
+                🚨 EMERGENCY CALL
+            </a>
+        </div>
+    </header>
+
+    <div class="stats-bar">
+        <div class="container" style="padding: 0; display: flex; justify-content: space-around; flex-wrap: wrap;">
+            <div>
+                <div class="stat-num">24/7</div>
+                <div class="stat-label">Standby Service</div>
+            </div>
+            <div>
+                <div class="stat-num">500+</div>
+                <div class="stat-label">Cars Fixed</div>
+            </div>
+            <div>
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Warranty</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container bg-carbon">
+        <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem;">OUR <span style="color:var(--red)">SERVICES</span></h2>
+        <div class="grid-3">
+            <div class="service-card">
+                <span class="icon">⚙️</span>
+                <h3>TUNE UP</h3>
+                <p style="color:#aaa; margin-top: 10px;">Optimalkan performa mesin seperti baru. Pembersihan injektor & ruang bakar.</p>
+            </div>
+            <div class="service-card">
+                <span class="icon">🛢️</span>
+                <h3>GANTI OLI</h3>
+                <p style="color:#aaa; margin-top: 10px;">Tersedia berbagai merk oli premium. Gratis cek filter & coolant.</p>
+            </div>
+            <div class="service-card">
+                <span class="icon">❄️</span>
+                <h3>SERVICE AC</h3>
+                <p style="color:#aaa; margin-top: 10px;">Spesialis AC mobil dingin menggigil. Isi Freon & Ganti Kompresor.</p>
+            </div>
+            <div class="service-card">
+                <span class="icon">🔧</span>
+                <h3>KAKI-KAKI</h3>
+                <p style="color:#aaa; margin-top: 10px;">Perbaikan suspensi, shockbreaker, dan balancing agar nyetir stabil.</p>
+            </div>
+            <div class="service-card">
+                <span class="icon">🔋</span>
+                <h3>AKI & KELISTRIKAN</h3>
+                <p style="color:#aaa; margin-top: 10px;">Jumper aki mogok, ganti aki baru delivery, dan urut kabel.</p>
+            </div>
+            <div class="service-card">
+                <span class="icon">🚛</span>
+                <h3>DEREK TOWING</h3>
+                <p style="color:#aaa; margin-top: 10px;">Layanan derek gendong 24 jam untuk evakuasi darurat.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: #151515; padding: 80px 0;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">ESTIMASI <span style="color:var(--red)">HARGA</span></h2>
+            <div style="max-width: 600px; margin: 0 auto; background: #222; border: 1px solid #333;">
+                <div class="price-row">
+                    <span>Jasa Tune Up Ringan</span>
+                    <span class="price-val">Start 250k</span>
+                </div>
+                <div class="price-row">
+                    <span>Service Rem (4 Roda)</span>
+                    <span class="price-val">Start 300k</span>
+                </div>
+                <div class="price-row">
+                    <span>Ganti Oli (Jasa Only)</span>
+                    <span class="price-val">Start 50k</span>
+                </div>
+                <div class="price-row">
+                    <span>Service AC (Isi Freon)</span>
+                    <span class="price-val">Start 200k</span>
+                </div>
+                <div class="price-row">
+                    <span>Scan Engine Scanner</span>
+                    <span class="price-val">Start 150k</span>
+                </div>
+            </div>
+            <p style="text-align: center; color: #666; margin-top: 20px; font-size: 0.9rem;">*Harga dapat berubah tergantung jenis mobil & tingkat kerusakan.</p>
+        </div>
+    </section>
+
+    <div style="height: 400px; filter: grayscale(100%) invert(92%) contrast(83%); border-top: 5px solid var(--red);">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15864.716909516854!2d106.704859!3d-6.24009405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88ed343af45fc195%3A0x98e5b8eaad8e2564!2sCiledugPromo.biz.id%20%7C%20Layanan%20Bisnis%20%26%20Pemasaran!5e0!3m2!1sid!2sid!4v1768642599691!5m2!1sid!2sid" 
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+
+    <footer>
+        <h2 style="margin-bottom: 20px;">TITAN MECHANIC</h2>
+        <p style="color: #666; margin-bottom: 30px;">Professional Auto Workshop based in Tangerang.</p>
+        
+        <div class="tech-partner">
+            <a href="https://ciledugpromo.biz.id/produk/11873/jasa-pembuatan-website-profesional-terima-beres-murah" target="_blank">WEB PARTNER</a>
+            <a href="https://ciledugpromo.biz.id/produk/10905/jasa-seo-tangerang-terbaik-strategi-posting-1000-website-untuk-dominasi-pasar" target="_blank">SEO EXPERT</a>
+            <a href="https://ciledugpromo.biz.id/produk/11874/jasa-landing-page-ciledug-tangerang" target="_blank">LP SPECIALIST</a>
+        </div>
+        
+        <p style="margin-top: 40px; font-size: 10px; color: #444;">COPYRIGHT 2026. TITAN ENGINE.</p>
+    </footer>
+
+</body>
+</html>
